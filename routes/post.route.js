@@ -22,4 +22,3 @@ router.get('/get-one/:id', PostController.getOne);
 
 module.exports = router;
 
-module.exports = router;
