@@ -1,5 +1,5 @@
 const Post = require("../model/post.model");
-const FileService = require("../server/file.server");
+const FileService = require("../service/file.service");
 
 class PostService {
     async getAll() {

@@ -1,10 +1,10 @@
 // controllers/post.controller.js
-const PostService = require('../server/post.server')
-const Post = require("../model/post.model");
+const PostService = require('../service/post.service');
 
 class PostController {
   async getAll(req, res) {
     try {
+      console.log(req.requestTime)
       const posts = await PostService.getAll();
       res.json(posts);
     } catch (err) {
@@ -14,7 +14,6 @@ class PostController {
 
   async create(req, res) {
     try {
-      console.log(req.files.picture)
       const post = await PostService.create(req.body, req.files.picture);
       res.status(201).json(post);
     } catch (err) {

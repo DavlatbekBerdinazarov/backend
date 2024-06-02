@@ -4,19 +4,24 @@ require("dotenv").config();
 const app = express();
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
-
+const requestTime = require('./middlewares/request-time')
 
 // middleware
+app.use(requestTime);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(fileUpload({}));
 app.use(express.static('static'));
 
+
 // Routes
 
 const postRoutes = require("./routes/post.route");
+const authRoutes = require("./routes/auth.route");
+
 app.use("/api/post", postRoutes);
+app.use("/api/auth", authRoutes);
 
 try {
   mongoose
